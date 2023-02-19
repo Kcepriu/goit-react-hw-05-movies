@@ -16,7 +16,8 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
-  console.log('🚀 ~ backLinkHref', backLinkHref);
+
+  // console.log('🚀 ~ backLinkHref', backLinkHref);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -70,7 +71,7 @@ const MovieDetails = () => {
           {filmInformatioin !== null && (
             <MovieInformation filmInformatioin={filmInformatioin} />
           )}
-          <AdditionalInformationFilm />
+          <AdditionalInformationFilm state={{ from: backLinkHref }} />
           <Outlet />
         </>
       )}
