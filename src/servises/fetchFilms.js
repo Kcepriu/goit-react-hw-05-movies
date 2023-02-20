@@ -73,11 +73,14 @@ export default class ApiThemoviedb {
     return result?.data;
   }
 
-  async getUrlImage(path) {
+  async getUrlImage(size) {
     const configurationImages = await this.getConfigurationImages();
+    console.log(configurationImages);
+
     // console.log(configurationImages.poster_sizes);
     // return `${configurationImages.base_url}${configurationImages.poster_sizes[0]}${path}`;
-    return `${configurationImages.base_url}original${path}`;
+    // return `${configurationImages.base_url}original${path}`;
+    return `${configurationImages.base_url}${size}`;
   }
 
   // * Work from configuration Images

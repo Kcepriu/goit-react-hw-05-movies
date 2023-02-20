@@ -17,8 +17,6 @@ const MovieDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
 
-  // console.log('🚀 ~ backLinkHref', backLinkHref);
-
   useEffect(() => {
     const controller = new AbortController();
     async function fetchInformation() {
@@ -36,10 +34,10 @@ const MovieDetails = () => {
           controller
         );
 
-        const posterPath = await apiThemoviedb.getUrlImage(poster_path);
+        const posterPath = await apiThemoviedb.getUrlImage('w342');
 
         setFilmInformatioin({
-          posterPath,
+          posterPath: `${posterPath}${poster_path}`,
           original_title,
           releaseDate: release_date.slice(0, 4),
           voteAverage: Math.ceil(Number(vote_average) * 10),
