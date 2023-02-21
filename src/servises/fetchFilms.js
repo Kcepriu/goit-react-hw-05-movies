@@ -74,13 +74,16 @@ export default class ApiThemoviedb {
   }
 
   async getUrlImage(size) {
+    // ! Документація саме так радить знаходити урл до зображенння
+    // Тому не підставляю просто рядок
+
     const configurationImages = await this.getConfigurationImages();
-    console.log(configurationImages);
+
+    return `${configurationImages.base_url}${size}`;
 
     // console.log(configurationImages.poster_sizes);
     // return `${configurationImages.base_url}${configurationImages.poster_sizes[0]}${path}`;
     // return `${configurationImages.base_url}original${path}`;
-    return `${configurationImages.base_url}${size}`;
   }
 
   // * Work from configuration Images

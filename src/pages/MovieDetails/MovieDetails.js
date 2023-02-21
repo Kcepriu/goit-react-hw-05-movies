@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import BackLink from 'components/BackLink';
 import AdditionalInformationFilm from 'components/AdditionalInformationFilm';
@@ -70,7 +70,9 @@ const MovieDetails = () => {
             <MovieInformation filmInformatioin={filmInformatioin} />
           )}
           <AdditionalInformationFilm state={{ from: backLinkHref }} />
-          <Outlet />
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </>
